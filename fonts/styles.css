@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'Nunito-Bold';
-  src: url(./Nunito-Bold.eot);
-  src: url(./Nunito-Bold.eot?#iefix) format('embedded-opentype'),
-       url(./Nunito-Bold.ttf) format('truetype'),
-       url(./Nunito-Bold.otf) format('otf'),
-       url(./Nunito-Bold.svg#Nunito-Bold) format('svg'),
-       url(./Nunito-Bold.woff) format('woff'),
-       url(./Nunito-Bold.woff2) format('woff2');
+  font-family: 'Nunito-ExtraLight';
+  src: url(./Nunito-ExtraLight.eot);
+  src: url(./Nunito-ExtraLight.eot?#iefix) format('embedded-opentype'),
+       url(./Nunito-ExtraLight.otf) format('otf'),
+       url(./Nunito-ExtraLight.svg#Nunito-ExtraLight) format('svg'),
+       url(./Nunito-ExtraLight.ttf) format('truetype'),
+       url(./Nunito-ExtraLight.woff) format('woff'),
+       url(./Nunito-ExtraLight.woff2) format('woff2');
 }

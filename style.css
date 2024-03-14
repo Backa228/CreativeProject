@@ -7,15 +7,73 @@
          url(fonts/Nunito-Bold.svg#Nunito-Bold) format('svg'),
          url(fonts/Nunito-Bold.woff) format('woff'),
          url(fonts/Nunito-Bold.woff2) format('woff2');
-  }  
+
+  } 
+
+ @font-face {
+    font-family: 'Nunito-ExtraLightItalic';
+    src: url(fonts/Nunito-ExtraLightItalic.eot);
+    src: url(fonts/Nunito-ExtraLightItalic.eot?#iefix) format('embedded-opentype'),
+         url(fonts/Nunito-ExtraLightItalic.otf) format('otf'),
+         url(fonts/Nunito-ExtraLightItalic.svg#Nunito-ExtraLightItalic) format('svg'),
+         url(fonts/Nunito-ExtraLightItalic.ttf) format('truetype'),
+         url(fonts/Nunito-ExtraLightItalic.woff) format('woff'),
+         url(fonts/Nunito-ExtraLightItalic.woff2) format('woff2');
+  } 
+
+@font-face {
+    font-family: 'Nunito-ExtraLight';
+    src: url(fonts/Nunito-ExtraLight.eot);
+    src: url(fonts/Nunito-ExtraLight.eot?#iefix) format('embedded-opentype'),
+         url(fonts/Nunito-ExtraLight.otf) format('otf'),
+         url(fonts/Nunito-ExtraLight.svg#Nunito-ExtraLight) format('svg'),
+         url(fonts/Nunito-ExtraLight.ttf) format('truetype'),
+         url(fonts/Nunito-ExtraLight.woff) format('woff'),
+         url(fonts/Nunito-ExtraLight.woff2) format('woff2');
+  }
+  
 
 body
 {
-    font-family: 'Nunito-Bold';
+    font-family: 'Nunito-ExtraLight';
     background-color: rgb(255, 170, 0);
 }
 
 a
 {
     width: 50vw;
+}
+
+/*Вдастівості для батьківського елементу
+
+column-count, column-width, columns
+
+column-width - визначає ширину стовця. Але фактична ширина 
+стовпчика може бути більшою або меншою.
+column-count - визначає кількість колонок, яку потрібно побудувати.
+column-count - визначає кількість колонок, яку потрібно побудувати.
+
+Коли вказуємо column-count та column-width, column-count - максимальна кількість колонок,
+column-width - мінімальна ширина колонки.
+
+columns - об'єднує дві властивості.
+column-gap - розрив між колонками. За замовчуванням column-gap = 1em. 
+column-rule - визначає стиль границь між колонками.
+Коли вказуємо column-count та column-width, column-count - максимальна кількість колонок,
+column-width - мінімальна ширина колонки.
+Значення column-width (px, em, rem)
+em = font-size в пікселях */
+
+
+.text{
+    background-color: aliceblue;
+    columns: 3 300px;
+    column-gap: 50px;
+    column-rule: 5px dotted rgb(153, 51, 134);
+}
+
+.em{
+    background-color: rgb(176, 251, 0);
+    width: 1em;
+    height: 1em;
 }
