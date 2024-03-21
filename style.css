@@ -63,6 +63,15 @@ column-rule - визначає стиль границь між колонкам
 column-width - мінімальна ширина колонки.
 Значення column-width (px, em, rem)
 em = font-size в пікселях */
+/*column-fill - визначає, як заповнювати стовпці - збалансовано чи ні.
+balance(за замовчуванням) - контент всередині колонок розподіляєься рівномірно.
+auto - стовпці заповнюються послідовно, коли контент не влазить в минулу колонку по висоті.
+ і працює тільки коли вказана висота*/
+ /*Властивість вкладених елементів: column-span - визначає, як повинен відображатися елемент в багатоколоковому тексті - 
+займати ширину всіх колонок або тільки одну з них*/
+
+/*break-inside - визначає, чи буде переходити контент з одного вкаленого елменту в інший.*/
+
 
 
 .text{
@@ -70,10 +79,37 @@ em = font-size в пікселях */
     columns: 3 300px;
     column-gap: 50px;
     column-rule: 5px dotted rgb(153, 51, 134);
+    /*column-fill: balance;
+    height: 500px;*/
+}
+
+.text #par2 
+{
+    /*column-span: all;*/
+}
+
+.text h2
+{
+    background-color: black;
+    padding: 15px;
+    color: aliceblue;
+
+    column-span: all;
+}
+
+.text p
+{
+    break-inside: avoid;
+    margin: 0;
+}
+
+.text span
+{
+    color: chocolate;
 }
 
 .em{
     background-color: rgb(176, 251, 0);
-    width: 1em;
-    height: 1em;
+    width: 5em;
+    height: 5em;
 }
