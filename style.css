@@ -46,7 +46,7 @@ a
 
 /* #region COLNMNS */
 
-/* #region MEASURE */
+
 
 /*Вдастівості для батьківського елементу
 
@@ -76,10 +76,9 @@ auto - стовпці заповнюються послідовно, коли к
 займати ширину всіх колонок або тільки одну з них*/
 
 /*break-inside - визначає, чи буде переходити контент з одного вкаленого елменту в інший.*/
+/*#endregion*/
 
-
-
-/* #region MEASURE*/
+/*#region MEASURE*/
 /*Одиниці виміру
 
 px - це абсолютна одиниця виміру, фіксована величина.
@@ -159,5 +158,65 @@ font-size, line-height - відносно розміру властивості 
     display: ;
 }
 
-/* #endregon */
 
+
+/*#endregion*/
+
+.menu ul
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    list-style: none;
+    width: 37.5rem;
+    background-color: rgb(0, 78, 0);
+    border-radius: 10px;
+}
+
+header
+{
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu
+{
+    text-align: center;
+}
+
+.logo img
+{
+    width: 80px;
+
+}
+
+.search
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    width: 11.25em;
+}
+
+.icons
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    width: 6.25em;
+    font-size: 25px;
+}
+
+.add-menu
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 19.4em;
+    flex-grow: 0.5;
+}
