@@ -172,6 +172,7 @@ font-size, line-height - відносно розміру властивості 
     width: 37.5rem;
     background-color: rgb(0, 78, 0);
     border-radius: 10px;
+    padding: 0;
 }
 
 header
@@ -180,6 +181,18 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 20px;
+    font-family: 'Nunito-Bold';
+    font-size: 20px;
+}
+
+.main-menu
+{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10rem;
+    width: 60.25rem;
+    flex-wrap: wrap;
 }
 
 .menu
@@ -187,10 +200,16 @@ header
     text-align: center;
 }
 
+.logo
+{
+    margin-left: 2.2rem;
+}
+
 .logo img
 {
     width: 80px;
-
+    margin: 10px;
+   
 }
 
 .search
@@ -202,6 +221,31 @@ header
     width: 11.25em;
 }
 
+.search input[type="search"] 
+{
+    width: 11.25rem;
+    height: 2.5rem;
+    border-radius: 20px;
+    background-color: rgb(255, 170, 0);/*rgb(82, 1, 82)*/
+    border: none;
+}
+
+.search input[type="search"]::placeholder
+{
+    font-size: 20px;
+    font-family: 'Nunito-bold';
+    color: black;
+    padding-left: 30%;
+}
+
+.search .btn-search i
+{
+    background-color: rgb(255, 170, 0);
+    border-radius: 50%;
+    padding: 0.625rem;
+    transform: translateX(100%);
+}
+
 .icons
 {
     display: flex;
@@ -209,14 +253,39 @@ header
     justify-content: space-around;
     text-align: center;
     width: 6.25em;
-    font-size: 25px;
+    font-size: 1.6rem;
 }
 
 .add-menu
 {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 19.4em;
-    flex-grow: 0.5;
+    justify-content: space-between;
+    width: 19.375rem;
+}
+
+.icons a
+{
+    color: black;
+}
+
+.icons i
+{
+    border-radius: 50%;
+    padding: 0.625rem;
+    background-color: green;
+}
+
+.icons i:hover 
+{
+    border-radius: 50%;
+    padding: 0.625rem;
+    background-color: rgb(0, 72, 0);
+}
+
+.btn-search i:hover
+{
+    border-radius: 50%;
+    padding: 0.625rem;
+    background-color: rgb(171, 114, 1);
 }
