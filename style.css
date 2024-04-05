@@ -191,7 +191,7 @@ header
     display: flex;
     justify-content: space-between;
     margin-right: 10rem;
-    width: 60.25rem;
+    width: 63.375rem;
     flex-wrap: wrap;
 }
 
@@ -208,8 +208,6 @@ header
 .logo img
 {
     width: 80px;
-    margin: 10px;
-   
 }
 
 .search
@@ -218,7 +216,6 @@ header
     align-items: center;
     justify-content: space-around;
     text-align: center;
-    width: 11.25em;
 }
 
 .search input[type="search"] 
@@ -228,6 +225,20 @@ header
     border-radius: 20px;
     background-color: rgb(255, 170, 0);/*rgb(82, 1, 82)*/
     border: none;
+    font-size: 1.25rem;
+    padding-left: 3.125rem;
+}
+
+.search input[type="search"]::-webkit-search-cancel-button
+{
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    /*background: url(img\close.png);*/
+    background-color: rgb(250, 133, 0);
+    /*background-size: auto;
+    opacity: 0.5;*/
+    border-radius: 20px;
 }
 
 .search input[type="search"]::placeholder
@@ -262,6 +273,7 @@ header
     align-items: center;
     justify-content: space-between;
     width: 19.375rem;
+    font-size: rem(25);/*1.7rem*/
 }
 
 .icons a
@@ -288,4 +300,22 @@ header
     border-radius: 50%;
     padding: 0.625rem;
     background-color: rgb(171, 114, 1);
+}
+
+@function rem($px)
+{
+    $result: math.div($px, 16) + rem;
+    @return $result
+}
+
+@function em($px, $fs)
+{
+    $result: math.div($px, $fs) + em;
+    @return $result;
+}
+
+@function prc($pxOne, $pxTwo)
+{
+    $result: math.div($pxOne, $pxTwo) * 100%;
+    @return $result;
 }
