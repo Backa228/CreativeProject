@@ -38,12 +38,6 @@ body
     font-family: 'Nunito-ExtraLight';
     background-color: rgb(255, 170, 0);
 }
-
-a
-{
-    width: 50vw;
-}
-
 /* #region COLNMNS */
 
 
@@ -162,28 +156,39 @@ font-size, line-height - відносно розміру властивості 
 
 /*#endregion*/
 
-.menu ul
+:root 
 {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    list-style: none;
-    width: 37.5rem;
-    background-color: rgb(0, 78, 0);
-    border-radius: 10px;
-    padding: 0;
+    --lightorange: rgb(255, 170, 0);
+    --darkorange: rgb(171, 114, 1);
+    --lightgreen: green;
+    --darcgreen: rgb(0, 72, 0);
+
 }
 
 header
 {
-    background-color: green;
+    background-color: var(--lightgreen);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
     font-family: 'Nunito-Bold';
     font-size: 20px;
+}
+
+.logo
+{
+    margin-left: 2.2rem;
+}
+
+.logo img
+{
+    width: 80px;
+}
+
+.menu
+{
+    text-align: center;
 }
 
 .main-menu
@@ -195,19 +200,33 @@ header
     flex-wrap: wrap;
 }
 
-.menu
+.menu ul
 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     text-align: center;
+    list-style: none;
+    width: 37.5rem;
+    height: calc(65/16*1rem);
+    /* background-color: rgb(0, 78, 0);
+    border-radius: 10px;*/
+    padding: 0;
+    margin: 0;
 }
 
-.logo
+.menu ul li
 {
-    margin-left: 2.2rem;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: calc(40/16*1rem);
+    border-bottom: 3px solid var(--lightgreen);
 }
 
-.logo img
+.menu ul li:hover
 {
-    width: 80px;
+    border-bottom: 3px solid black;
 }
 
 .search
@@ -221,24 +240,22 @@ header
 .search input[type="search"] 
 {
     width: 11.25rem;
-    height: 2.5rem;
+    height: calc(48/16*1rem);
     border-radius: 20px;
-    background-color: rgb(255, 170, 0);/*rgb(82, 1, 82)*/
+    background-color: var(--lightorange);/*rgb(82, 1, 82)*/
     border: none;
     font-size: 1.25rem;
     padding-left: 3.125rem;
 }
 
-.search input[type="search"]::-webkit-search-cancel-button
+.search input[type="search"]::-webkit-search-cancel-button 
 {
     -webkit-appearance: none;
-    height: 1em;
-    width: 1em;
-    /*background: url(img\close.png);*/
-    background-color: rgb(250, 133, 0);
-    /*background-size: auto;
-    opacity: 0.5;*/
-    border-radius: 20px;
+    height: calc(20/20*1em);
+    width: calc(20/20*1em);
+    background: url(img/close.png);
+    background-size: cover;
+    opacity: 0.7;
 }
 
 .search input[type="search"]::placeholder
@@ -251,7 +268,7 @@ header
 
 .search .btn-search i
 {
-    background-color: rgb(255, 170, 0);
+    background-color: var(--lightorange);
     border-radius: 50%;
     padding: 0.625rem;
     transform: translateX(100%);
@@ -273,7 +290,7 @@ header
     align-items: center;
     justify-content: space-between;
     width: 19.375rem;
-    font-size: rem(25);/*1.7rem*/
+    font-size: calc(28 / 16 * 1rem);/*1.75rem*/
 }
 
 .icons a
@@ -283,25 +300,25 @@ header
 
 .icons i
 {
-    border-radius: 50%;
+    border-radius: 20px;
     padding: 0.625rem;
-    background-color: green;
+    background-color: var(--lightgreen);
 }
 
 .icons i:hover 
 {
     border-radius: 50%;
     padding: 0.625rem;
-    background-color: rgb(0, 72, 0);
+    background-color: var(--darcgreen);
 }
 
 .btn-search i:hover
 {
-    border-radius: 50%;
+    border-radius: 20px;
     padding: 0.625rem;
-    background-color: rgb(171, 114, 1);
+    background-color: var(--darkorange);
 }
-
+/*#region*/
 @function rem($px)
 {
     $result: math.div($px, 16) + rem;
@@ -319,3 +336,4 @@ header
     $result: math.div($pxOne, $pxTwo) * 100%;
     @return $result;
 }
+/*#endregion*/
