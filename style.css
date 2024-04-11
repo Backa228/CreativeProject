@@ -224,6 +224,12 @@ header
     border-bottom: 3px solid var(--lightgreen);
 }
 
+.menu ul li a
+{
+    text-decoration: none;
+    color: black;
+}
+
 .menu ul li:hover
 {
     border-bottom: 3px solid black;
