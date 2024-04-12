@@ -290,6 +290,36 @@ header
     font-size: 1.6rem;
 }
 
+.catalog
+{
+    background-color: var(--darkorange);
+    columns: 5 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    column-gap: 1em;
+    border-radius: 0 0 20px 20px ;
+}
+
+.catalog div ul
+{
+    list-style: none;
+    padding: 0;
+    font-size: calc(20/16*1rem);
+}
+
+.catalog div
+{
+    margin: 0;
+    padding: 15px;
+    break-inside: avoid;
+}
+
+.catalog div h3
+{
+    font-size: calc(22/16*1rem);
+}
+
 .add-menu
 {
     display: flex;
