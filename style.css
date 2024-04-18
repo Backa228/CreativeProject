@@ -320,6 +320,25 @@ header
     font-size: calc(22/16*1rem);
 }
 
+.catalog-anim 
+{
+    animation-name: slide;
+    animation-duration: 1000ms;
+}
+
+@keyframes slide
+{
+    0%
+    {
+        transform: translateY(-3%);
+    }
+
+    100%
+    {
+        transform: translateY(0%);
+    }
+}
+
 .add-menu
 {
     display: flex;
