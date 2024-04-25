@@ -28,6 +28,7 @@ item.addEventListener('mouseover', function() {
         animationInProgress = false;
         console.log(catalogDiv);
 
+        
         catalogDiv.removeEventListener('animationend', doingAnimationEnd);
     });
 
