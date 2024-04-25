@@ -99,6 +99,20 @@ vmax - залежить відносно максимальне значення
 transform:translate(x,y) - відносно ширини/висоти самого об'єкта до якого застосовано властивість
 font-size, line-height - відносно розміру властивості font-size*/
 
+header
+{
+    background-color: var(--lightgreen);
+    border-radius: 20px;
+    font-family: 'Nunito-Bold';
+    font-size: 20px;
+}
+
+.main-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .text{
     background-color: aliceblue;
@@ -163,17 +177,6 @@ font-size, line-height - відносно розміру властивості 
     --lightgreen: green;
     --darcgreen: rgb(0, 72, 0);
 
-}
-
-header
-{
-    background-color: var(--lightgreen);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    font-family: 'Nunito-Bold';
-    font-size: 20px;
 }
 
 .logo
@@ -292,13 +295,27 @@ header
 
 .catalog
 {
-    background-color: var(--darkorange);
-    columns: 5 200px;
-    display: flex;
+    background-color: var(--lightgreen);
+    display: none;
     justify-content: center;
     align-items: flex-start;
     column-gap: 1em;
     border-radius: 0 0 20px 20px ;
+}
+
+#catalog-1, #catalog-2, #catalog-3, #catalog-4
+{
+    columns: 5 200px;
+}
+
+#catalog-5
+{
+    columns: 3 200px;
+}
+
+#catalog-6
+{
+    columns: 4 200px;
 }
 
 .catalog div ul
@@ -320,9 +337,15 @@ header
     font-size: calc(22/16*1rem);
 }
 
-.catalog-anim 
+.catalog-anim-in
 {
     animation-name: slide;
+    animation-duration: 1000ms;
+}
+
+.catalog-anim-out
+{
+    animation-name: slide-out;
     animation-duration: 1000ms;
 }
 
@@ -330,12 +353,39 @@ header
 {
     0%
     {
-        transform: translateY(-3%);
+        opacity: 0;
+        max-height: 0;
+    }
+
+    50%
+    {
+        opacity: 0;
     }
 
     100%
     {
-        transform: translateY(0%);
+        opacity: 1;
+        max-height: 600px;
+    }
+}
+
+@keyframes slide-out
+{
+    0%
+    {
+        opacity: 1;
+        max-height: 600px;
+    }
+
+    50%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 0;
+        max-height: 0;
     }
 }
 
