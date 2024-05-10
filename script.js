@@ -12,17 +12,17 @@ let currentCatalogDiv = null;//буде визначати поточний ка
 // && - І
 
 items.forEach((itemList, index) => {
-    console.log(itemList, index);
-
-    let catalogDiv = document.getElementById(`catalog-${index + 1}`);
+    let catalogDiv = document.getElementById(`catalog-${index+1}`);
+    let relatedItem = itemList.relatedTarget
+    let targetItem = itemList.target;
 
     itemList.addEventListener('mouseover', function () {
 
         if (!isCatalogVisible && !animationInProgress) {// -> isCatalogVisible == false
-            hideAndshowCatalog(catalogDiv);
+            showCatalog(catalogDiv);
         }
         else if (currentCatalogDiv !== catalogDiv) {
-            hideCatalog(catalogDiv)
+            //hideCatalog(catalogDiv)
         }
     });
 
@@ -74,7 +74,7 @@ function hideCatalog(catalogDiv) {
         catalogDiv.classList.remove('catalog-anim-out');
         catalogDiv.style.display = 'none';
         isCatalogVisible = false;
-        animationInProgress = true;
+        animationInProgress = false;
         console.log(catalogDiv);
 
         catalogDiv.removeEventListener('animationend', doingAnimationEnd);
