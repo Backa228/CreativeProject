@@ -292,6 +292,11 @@ header
     width: 6.25em;
     font-size: 1.6rem;
 }
+ 
+.menu-icon
+{
+    display: none;
+}
 
 .catalog
 {
@@ -349,6 +354,60 @@ header
     animation-duration: 1000ms;
 }
 
+.add-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 19.375rem;
+    font-size: calc(28 / 16 * 1rem);
+    /*1.75rem*/
+}
+
+.icons a {
+    color: black;
+}
+
+.icons i {
+    border-radius: 20px;
+    padding: 0.625rem;
+    background-color: var(--lightgreen);
+}
+
+.icons i:hover {
+    border-radius: 50%;
+    padding: 0.625rem;
+    background-color: var(--darcgreen);
+}
+
+.btn-search i:hover {
+    border-radius: 20px;
+    padding: 0.625rem;
+    background-color: var(--darkorange);
+}
+
+@media screen and (max-width: 850px){
+    .menu, .search form{
+        display: none;
+    }
+
+    .menu-icon{
+        display: block;
+    }
+
+    .add-menu{
+
+        width: calc(265/16*1rem);
+    }
+
+        .search .btn-search i {
+            transform: translateX(0%);
+        }
+
+    .icons{
+        width: calc(165/16*1rem);
+    }
+}
+
 @keyframes slide
 {
     0%
@@ -387,41 +446,6 @@ header
         opacity: 0;
         max-height: 0;
     }
-}
-
-.add-menu
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 19.375rem;
-    font-size: calc(28 / 16 * 1rem);/*1.75rem*/
-}
-
-.icons a
-{
-    color: black;
-}
-
-.icons i
-{
-    border-radius: 20px;
-    padding: 0.625rem;
-    background-color: var(--lightgreen);
-}
-
-.icons i:hover 
-{
-    border-radius: 50%;
-    padding: 0.625rem;
-    background-color: var(--darcgreen);
-}
-
-.btn-search i:hover
-{
-    border-radius: 20px;
-    padding: 0.625rem;
-    background-color: var(--darkorange);
 }
 /*#region*/
 @function rem($px)

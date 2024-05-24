@@ -1,33 +1,43 @@
 let items = document.querySelectorAll('.menu ul li');
-
+let menuUl = document.querySelector('.menu ul');
+console.log(menuUl);
 let item = document.querySelector(".menu ul li");
 
 let isCatalogVisible = false;//Чи каталог видимий
 let animationInProgress = false;//Чи вже триває анімація?
+let showCatalogTimer = null;
 let previousCatalogDiv = null;//відповідає за зберігання попередгього каталогу(той, на який було наведено курсор миші до цього)
 // ! - НЕ
 // || - AБО
 // && - І
 
+menuUl.addEventListener('mouseleave', function () {
+    hideCatalog(previousCatalogDiv, true);
+});
+
 items.forEach((itemList, index) => {
     let catalogDiv = document.getElementById(`catalog-${index+1}`);
-    let relatedItem = itemList.relatedTarget
-    let targetItem = itemList.target;
+    // let relatedItem = itemList.relatedTarget
+    // let targetItem = itemList.target;
 
     itemList.addEventListener('mouseenter', function () {
 
-        // clearTimeout(hideCatalogTimer);
+        clearTimeout(showCatalogTimer);
 
         if (!isCatalogVisible && !animationInProgress) {// -> isCatalogVisible == false
+            showCatalogTimer = setTimeout(() => {
             showCatalog(catalogDiv, true);
+            }, 200);
         }
         else if (previousCatalogDiv !== catalogDiv) {
-            hideAndshowCatalog(catalogDiv)
+            showCatalogTimer = setTimeout(() => {
+                hideAndshowCatalog(catalogDiv)
+            });
         }
     });
 
     itemList.addEventListener('mouseleave', function () {
-
+         clearTimeout(showCatalogTimer);
     });
 });
 
