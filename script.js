@@ -94,3 +94,10 @@ function hideCatalog(catalogDiv, withAnimation) {
        
     }
 }
+
+let menuIcon = document.querySelector('.menu-icon');
+let sideBar = document.querySelector('.sidebar-menu');
+
+menuIcon.addEventListener('click', function () {
+    sideBar.classList.add('active');
+})
