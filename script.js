@@ -97,7 +97,26 @@ function hideCatalog(catalogDiv, withAnimation) {
 
 let menuIcon = document.querySelector('.menu-icon');
 let sideBar = document.querySelector('.sidebar-menu');
-
+let closeBtn = document.querySelector('.close-btn i');
+let contentElements = document.querySelectorAll('.content');
+let body = document.body;
 menuIcon.addEventListener('click', function () {
     sideBar.classList.add('active');
-})
+    body.style.overflow = 'hidden';//зупинка прокрутки
+
+    contentElements.forEach(content => {
+        content.classList.add('blur');
+    });
+});
+
+closeBtn.addEventListener('click', function () {
+    sideBar.classList.remove('active');
+    body.style.overflow = 'visible';//можемо прокручувати
+
+    contentElements.forEach(content => {
+        content.classList.remove('blur');
+    });
+
+});
+
+
