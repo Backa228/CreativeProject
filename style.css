@@ -478,6 +478,24 @@ header
     }
 }
 
+.gallery {
+    display: flex;
+}
+
+.gallery-container {
+    display: flex;
+}
+
+.gallery-item img {
+    height: 250px;
+}
+
+.gallery-item h3 {
+    position: relative;
+    bottom: 65px;
+    left: 80px;
+}
+
 @keyframes slide
 {
     0%

@@ -32,7 +32,7 @@ items.forEach((itemList, index) => {
         else if (previousCatalogDiv !== catalogDiv) {
             showCatalogTimer = setTimeout(() => {
                 hideAndshowCatalog(catalogDiv)
-            });
+            }, 200);
         }
     });
 
@@ -49,6 +49,7 @@ function showCatalog(catalogDiv, withAnimation) {
         //(withAnimation) => withAnimation == true
         //(!withAnimation) => withAnimation == false
         catalogDiv.classList.add('catalog-anim-in');
+        catalogDiv.style.display = 'flex';
         isCatalogVisible = true;//Чи елемент каталог видимий?
         animationInProgress = true;
         catalogDiv.addEventListener('animationend', function doingAnimationEnd() {
