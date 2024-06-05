@@ -36,7 +36,7 @@
 body
 {
     font-family: 'Nunito-ExtraLight';
-    background-color: rgb(255, 170, 0);
+    background-color: var(--white);
 }
 /* #region COLNMNS */
 
@@ -176,7 +176,9 @@ header
     --darkorange: rgb(171, 114, 1);
     --lightgreen: green;
     --darcgreen: rgb(0, 72, 0);
-
+    --grayNike: #F6F6F6;
+    --darkGrayNike: #CACACB;
+    --white: rgb(255, 255, 255);
 }
 
 .logo
@@ -480,20 +482,68 @@ header
 
 .gallery {
     display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 .gallery-container {
     display: flex;
+    gap: 30px;
+    width: max-content;
 }
 
 .gallery-item img {
-    height: 250px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery-item{
+    width: 270px;
+    height: 270px;
+    position: relative;
+    overflow: hidden;
 }
 
 .gallery-item h3 {
-    position: relative;
-    bottom: 65px;
-    left: 80px;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.prev i, .next i{
+    padding: calc((30 - 20) / 2 * 1px) calc((30 - 12.5) / 2 * 1px);
+} 
+
+.prev, .next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--darkGrayNike);
+    border-radius: 50%;
+    cursor: pointer;   
+    font-size: 20px;
+    z-index: 10; 
+}
+
+.prev:hover, .next:hover{
+    background-color: var(--darkGrayNike);
+    border-radius: 30%;
+}
+
+.prev {
+    left: 5px;
+}
+
+.next {
+    right: 5px;
 }
 
 @keyframes slide
