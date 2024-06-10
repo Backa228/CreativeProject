@@ -538,6 +538,11 @@ header
     border-radius: 30%;
 }
 
+.head1 {
+    margin-left: 2.5rem;
+    /* transform: translateX(-50%); */
+}
+
 .prev {
     left: 5px;
 }

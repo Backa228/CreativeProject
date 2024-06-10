@@ -121,3 +121,59 @@ closeBtn.addEventListener('click', function () {
 });
 
 
+const galleryContainer = document.querySelector('.gallery-conteiner');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+let currentIndex = 0;
+
+const itemGallery = [
+    { src: 'img\galleryMainPage\air-max-97-womens-.png', alt: 'air-max-97', title: 'AIR MAX' },
+    { src: 'img\galleryMainPage\air-force-1-07-lv8-mens.png', alt: 'air-force-1', title: 'AIR FORCE' },
+    { src: 'img\galleryMainPage\air-jordan-1-element.png', alt: 'air-jordan-1', title: 'AIR JORDAN 1' },
+    { src: 'img\galleryMainPage\blazer-mid-77-womens.png', alt: 'blazer-mid-77', title: 'BLAZER' },
+    { src: 'img\galleryMainPage\dunk-low-retro-mens.png', alt: 'dunk-low-retro-mens', title: 'DUNK' },
+    { src: 'img\galleryMainPage\zoom-vomero-5-mens-lightgreen.png', alt: 'zoom-vomero-5', title: 'VOMERO'}
+]
+
+function createGalleryItem(item) {
+    const = galleryItem = document.createElement('div');
+    galleryItem.classList.add('gallery-item');
+
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt;
+
+    const title = document.createElement('h3');
+    title.textContent = item.title;
+
+    galleryItem.appendChild(img);
+    galleryItem.appendChild(title);
+    return galleryItem;
+}
+
+function createGalleryItems() {
+    const fragment = document.createDocumentFragment();
+}
+
+function updateGallery() {
+    let itemWidht = galleryItems[0].clientWidth + 30;
+    const offset = -currentIndex * itemWidht;
+    console.log(offset);
+    galleryContainer.style.transform = `translateX(${offset}px)`;    //якщо translateX(+) - то рух =>
+    //якщо translateX(-) - то рух <=
+}
+
+function showNext() {
+    currentIndex = currentIndex + 1;
+    updateGallery();
+}
+
+function showPrev() {
+    currentIndex = currentIndex - 1;
+    updateGallery();
+}
+
+nextButton.addEventListener('click', showNext);
+prevButton.addEventListener('click', showPrev);
+updateGallery();
