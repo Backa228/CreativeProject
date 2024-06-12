@@ -122,11 +122,6 @@ closeBtn.addEventListener('click', function () {
 
 
 const galleryContainer = document.querySelector('.gallery-conteiner');
-const galleryItems = document.querySelectorAll('.gallery-item');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-let currentIndex = 0;
-
 const itemGallery = [
     { src: 'img\galleryMainPage\air-max-97-womens-.png', alt: 'air-max-97', title: 'AIR MAX' },
     { src: 'img\galleryMainPage\air-force-1-07-lv8-mens.png', alt: 'air-force-1', title: 'AIR FORCE' },
@@ -154,7 +149,23 @@ function createGalleryItem(item) {
 
 function createGalleryItems() {
     const fragment = document.createDocumentFragment();
+    itemsGallery.forEach(item => { 
+        const galleryItem = createGalleryItem(item);
+        fragment.appendChild(galleryItem);
+    });
+    itemsGallery.forEach(item => { 
+        const galleryItem = createGalleryItem(item);
+        fragment.appendChild(galleryItem);
+    });
+
+    galleryContainer.appendChild(fragment);
+    console.log(galleryContainer);
 }
+
+const galleryItems = document.querySelectorAll('.gallery-item');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+let currentIndex = items.length;
 
 function updateGallery() {
     let itemWidht = galleryItems[0].clientWidth + 30;
@@ -165,12 +176,18 @@ function updateGallery() {
 }
 
 function showNext() {
-    currentIndex = currentIndex + 1;
+    // currentIndex = currentIndex + 1;
+    currentIndex++;
     updateGallery();
+    if (currentIndex === galleryItems.length - items.length) {
+        currentIndex = items.length;
+        updateGallery();
+    }
 }
 
 function showPrev() {
-    currentIndex = currentIndex - 1;
+    // currentIndex = currentIndex - 1;
+    currentIndex--;
     updateGallery();
 }
 
