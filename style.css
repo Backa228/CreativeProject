@@ -492,6 +492,7 @@ header
     display: flex;
     gap: 30px;
     width: max-content;
+    transition: transform 0.5 ease;
 }
 
 .gallery-item img {

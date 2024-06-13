@@ -119,20 +119,18 @@ closeBtn.addEventListener('click', function () {
     });
 
 });
-
-
-const galleryContainer = document.querySelector('.gallery-conteiner');
-const itemGallery = [
-    { src: 'img\galleryMainPage\air-max-97-womens-.png', alt: 'air-max-97', title: 'AIR MAX' },
-    { src: 'img\galleryMainPage\air-force-1-07-lv8-mens.png', alt: 'air-force-1', title: 'AIR FORCE' },
-    { src: 'img\galleryMainPage\air-jordan-1-element.png', alt: 'air-jordan-1', title: 'AIR JORDAN 1' },
-    { src: 'img\galleryMainPage\blazer-mid-77-womens.png', alt: 'blazer-mid-77', title: 'BLAZER' },
-    { src: 'img\galleryMainPage\dunk-low-retro-mens.png', alt: 'dunk-low-retro-mens', title: 'DUNK' },
-    { src: 'img\galleryMainPage\zoom-vomero-5-mens-lightgreen.png', alt: 'zoom-vomero-5', title: 'VOMERO'}
+const galleryContainer = document.querySelector('.gallery-container');
+const itemsGallery = [
+    { src: 'img/galleryMainPage/air-max-97-womens-.png', alt: 'air-max-97', title: 'AIR MAX' },
+    { src: 'img/galleryMainPage/air-force-1-07-lv8-mens.png', alt: 'air-force-1', title: 'AIR FORCE' },
+    { src: 'img/galleryMainPage/air-jordan-1-element.png', alt: 'air-jordan-1', title: 'AIR JORDAN 1' },
+    { src: 'img/galleryMainPage/blazer-mid-77-womens.png', alt: 'blazer-mid-77', title: 'BLAZER' },
+    { src: 'img/galleryMainPage/dunk-low-retro-mens.png', alt: 'dunk-low-retro-mens', title: 'DUNK' },
+    { src: 'img/galleryMainPage/zoom-vomero-5-mens-lightgreen.png', alt: 'zoom-vomero-5', title: 'VOMERO'}
 ]
 
 function createGalleryItem(item) {
-    const = galleryItem = document.createElement('div');
+    const galleryItem = document.createElement('div');
     galleryItem.classList.add('gallery-item');
 
     const img = document.createElement('img');
@@ -161,7 +159,7 @@ function createGalleryItems() {
     galleryContainer.appendChild(fragment);
     console.log(galleryContainer);
 }
-
+createGalleryItems();
 const galleryItems = document.querySelectorAll('.gallery-item');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
@@ -176,10 +174,15 @@ function updateGallery() {
 }
 
 function showNext() {
+    console.log('hufbdvnjsckm');
     // currentIndex = currentIndex + 1;
     currentIndex++;
+    console.log(currentIndex);
     updateGallery();
     if (currentIndex === galleryItems.length - items.length) {
+        // console.log(currentIndex);
+        // console.log(galleryItems.legth);
+        // console.log(items.legth);
         currentIndex = items.length;
         updateGallery();
     }
@@ -189,6 +192,11 @@ function showPrev() {
     // currentIndex = currentIndex - 1;
     currentIndex--;
     updateGallery();
+    if (currentIndex === items.length - 1) {
+        currentIndex = items.length * 2 - 1;
+        updateGallery();
+        galleryContainer.style.tranform = 'transform 0.5 ease';
+    }
 }
 
 nextButton.addEventListener('click', showNext);
