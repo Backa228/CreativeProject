@@ -174,17 +174,24 @@ function updateGallery() {
 }
 
 function showNext() {
-    console.log('hufbdvnjsckm');
+    // console.log('hufbdvnjsckm');
     // currentIndex = currentIndex + 1;
     currentIndex++;
     console.log(currentIndex);
     updateGallery();
+    galleryContainer.style.transition = "transform 0.5s ease";
     if (currentIndex === galleryItems.length - items.length) {
         // console.log(currentIndex);
         // console.log(galleryItems.legth);
         // console.log(items.legth);
-        currentIndex = items.length;
-        updateGallery();
+        setTimeout(() => {
+            galleryContainer.style.transition = "none";
+            currentIndex = items.length;//6
+            updateGallery();
+            setTimeout(() => {
+                galleryContainer.style.tranform = 'transform 0.5s ease';
+            }, 0);
+         }, 500);
     }
 }
 
@@ -192,10 +199,14 @@ function showPrev() {
     // currentIndex = currentIndex - 1;
     currentIndex--;
     updateGallery();
+    galleryContainer.style.transition = 'transform 0.5s ease';
     if (currentIndex === items.length - 1) {
-        currentIndex = items.length * 2 - 1;
-        updateGallery();
-        galleryContainer.style.tranform = 'transform 0.5 ease';
+
+        setTimeout(() => {
+            galleryContainer.style.transition = "none";
+            currentIndex = items.length * 2 - 1; 
+            updateGallery();
+         }, 500);
     }
 }
 
