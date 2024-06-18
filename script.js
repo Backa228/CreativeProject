@@ -213,3 +213,20 @@ function showPrev() {
 nextButton.addEventListener('click', showNext);
 prevButton.addEventListener('click', showPrev);
 updateGallery();
+
+const header = document.querySelector('header');
+
+let lastScrollTop = 0;//змінна для збереження позиції останнього скролінгу
+
+window.addEventListener('scroll', () => {
+
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+        header.classList.add('hidden');
+    } else if (scrollTop < lastScrollTop) {
+        header.classList.remove('hidden');
+    }
+
+    lastScrollTop = scrollTop;
+
+});
