@@ -214,7 +214,7 @@ nextButton.addEventListener('click', showNext);
 prevButton.addEventListener('click', showPrev);
 updateGallery();
 
-const header = document.querySelector('header');
+const header = document.querySelector('header.content');
 
 let lastScrollTop = 0;//змінна для збереження позиції останнього скролінгу
 
@@ -230,3 +230,29 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 
 });
+
+let cars = ['BMW', "Porche", "Audi"];
+
+// alert(cars);
+// alert(cars[2]);
+
+cars[2] = 'Ferrari';
+// alert(cars);
+// alert(cars[2]);
+
+console.log(cars.length);
+for(let i = 0; i < cars.length; i++) {
+    console.log(i, cars[i]);
+}
+
+function letterFinder(word, match) {
+    for(let i = 0; i < word.length; i++) {
+        if (word[i] == match) {
+            console.log(i, word[i]);
+        } else {
+            console.log('Такої літери в цьому слові немає.')
+        }
+    }
+}
+
+letterFinder('cat', 'A');

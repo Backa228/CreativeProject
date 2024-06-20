@@ -99,7 +99,7 @@ vmax - залежить відносно максимальне значення
 transform:translate(x,y) - відносно ширини/висоти самого об'єкта до якого застосовано властивість
 font-size, line-height - відносно розміру властивості font-size*/
 
-header
+header.content
 {
     background-color: var(--lightgreen);
     border-radius: 0 0 20px 20px;
@@ -110,6 +110,11 @@ header
     left: 0;
     width: 100%;
     z-index: 1000;
+    transition: top 0.5s ease-in-out
+}
+
+header.content.hidden {
+    top: calc(-67.2 / 16 * 1rem);
 }
 
 .hidden {
