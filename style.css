@@ -573,6 +573,12 @@ main {
     right: 5px;
 }
 
+.prev.disabled,
+.next.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 @keyframes slide
 {
     0%

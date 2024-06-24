@@ -165,54 +165,65 @@ const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 let currentIndex = items.length;
 
-function updateGallery() {
+function updateGallery(transition = true) {
     let itemWidht = galleryItems[0].clientWidth + 30;
     const offset = -currentIndex * itemWidht;
     console.log(offset);
+
+    if(transition == true) {
+        galleryContainer.style.transition = 'transform 0.5s ease';
+    } else {
+        galleryContainer.style.transition = 'none';
+    }
+
     galleryContainer.style.transform = `translateX(${offset}px)`;    //якщо translateX(+) - то рух =>
     //якщо translateX(-) - то рух <=
+
+}
+
+function disableButton(button) {
+    button.classList.add('.disabled');
+}
+
+function enableButton(button) {
+    button.classList.remove('.disabled');
 }
 
 function showNext() {
-    // console.log('hufbdvnjsckm');
-    // currentIndex = currentIndex + 1;
+    if (nextButton.classList.contains('.disabled')) return;//якщо кнопка неактивна, то функція showNext() не працює
+
     currentIndex++;
-    console.log(currentIndex);
+    disableButton(nextButton);
     updateGallery();
-    galleryContainer.style.transition = "transform 0.5s ease";
+
     if (currentIndex === galleryItems.length - items.length) {
-        // console.log(currentIndex);
-        // console.log(galleryItems.legth);
-        // console.log(items.legth);
-        setTimeout(() => {
-            galleryContainer.style.transition = "none";
-            currentIndex = items.length;//6
-            updateGallery();
-            setTimeout(() => {
-                galleryContainer.style.tranform = 'transform 0.5s ease';
-            }, 0);
-         }, 500);
+        console.log(galleryItems.length, items.length)
+        galleryContainer.addEventListener('transitionend', () => {
+        currentIndex = items.length;
+            updateGallery(false);
+            enableButton(nextButton);
+        }, { once: true });//once: true - обробник подій працює один раз і автоматично видаляється
+    } else {
+        galleryContainer.addEventListener('.transitionend', () => {
+            enableButton(nextButton);
+        }, { once: true });
     }
 }
 
 function showPrev() {
-    // currentIndex = currentIndex - 1;
     currentIndex--;
     updateGallery();
-    galleryContainer.style.transition = 'transform 0.5s ease';
-    if (currentIndex === items.length - 1) {
-
-        setTimeout(() => {
-            galleryContainer.style.transition = "none";
-            currentIndex = items.length * 2 - 1; 
-            updateGallery();
-         }, 500);
+    if (currentIndex === itemsGallery.length - 1) {
+        galleryContainer.addEventListener('transitionend', () => {
+            currentIndex = itemsGallery.length * 2 - 1;
+            updateGallery(false);
+        }, { once: true });//once: true - обробник подій працює один раз і автоматично видаляється
     }
 }
-
+updateGallery(false);
 nextButton.addEventListener('click', showNext);
 prevButton.addEventListener('click', showPrev);
-updateGallery();
+
 
 const header = document.querySelector('header.content');
 
