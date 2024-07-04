@@ -2,18 +2,29 @@ let items = document.querySelectorAll('.menu ul li');
 let menuUl = document.querySelector('.menu ul');
 console.log(menuUl);
 let item = document.querySelector(".menu ul li");
-
 let isCatalogVisible = false;//Чи каталог видимий
 let animationInProgress = false;//Чи вже триває анімація?
 let showCatalogTimer = null;
 let previousCatalogDiv = null;//відповідає за зберігання попередгього каталогу(той, на який було наведено курсор миші до цього)
+
+const header = document.querySelector('header.content');
+const mainHeader = document.querySelector('header.content .main-header');
+const catalog = document.querySelectorAll('header.content .catalog');
 // ! - НЕ
 // || - AБО
 // && - І
 
-menuUl.addEventListener('mouseleave', function () {
-    hideCatalog(previousCatalogDiv, true);
+menuUl.addEventListener('mouseleave', function (event) {
+    if (event.relatedTarget && mainHeader.contains(event.relatedTarget)) {
+        hideCatalog(previousCatalogDiv, true);
+    }
 });
+
+ catalog.forEach((catalogItem) => {
+    header.addEventListener('mouseleave', function () {
+        hideCatalog(previousCatalogDiv, true);
+    });
+})
 
 items.forEach((itemList, index) => {
     let catalogDiv = document.getElementById(`catalog-${index+1}`);
@@ -37,14 +48,25 @@ items.forEach((itemList, index) => {
     });
 
     itemList.addEventListener('mouseleave', function () {
-         clearTimeout(showCatalogTimer);
+        clearTimeout(showCatalogTimer);
     });
 });
 
+function hideAllCatalogs() {
+    items.forEach((itemList, index) => {
+        let catalogDiv = document.getElementById(`catalog-${index + 1}`);
+        if (catalogDiv) {
+            catalogDiv.style.display = 'none';
+        }
+    });
+    isCatalogVisible = false;
+    animationInProgress = false;
+}
 
 //isCatalogVisible = true;
 
 function showCatalog(catalogDiv, withAnimation) {
+    hideAllCatalogs();
     if (withAnimation) {
         //(withAnimation) => withAnimation == true
         //(!withAnimation) => withAnimation == false
@@ -181,19 +203,30 @@ function updateGallery(transition = true) {
 
 }
 
-function disableButton(button) {
-    button.classList.add('.disabled');
+function disableButton(disabledPrev, disabledNext) {
+    if (disabledPrev == true) {
+        prevButton.classList.add('disabled');
+    }
+    if (disabledNext == true) {
+        nextButton.classList.add('disabled')
+    }
 }
 
-function enableButton(button) {
-    button.classList.remove('.disabled');
+function enableButton(enablePrev = true, enableNext = true) {
+    if (enablePrev) {
+        prevButton.classList.remove('disabled');
+    }
+
+    if (enableNext) {
+        nextButton.classList.remove('disabled');
+    }
 }
 
 function showNext() {
-    if (nextButton.classList.contains('.disabled')) return;//якщо кнопка неактивна, то функція showNext() не працює
+    if (nextButton.classList.contains('disabled')) return;//якщо кнопка неактивна, то функція showNext() не працює
 
     currentIndex++;
-    disableButton(nextButton);
+    disableButton(false, true);
     updateGallery();
 
     if (currentIndex === galleryItems.length - items.length) {
@@ -201,23 +234,25 @@ function showNext() {
         galleryContainer.addEventListener('transitionend', () => {
         currentIndex = items.length;
             updateGallery(false);
-            enableButton(nextButton);
+            enableButton(false, true);
         }, { once: true });//once: true - обробник подій працює один раз і автоматично видаляється
     } else {
-        galleryContainer.addEventListener('.transitionend', () => {
-            enableButton(nextButton);
-        }, { once: true });
+        galleryContainer.addEventListener('transitionend', () => enableButton(false, true), { once: true });
     }
 }
 
 function showPrev() {
     currentIndex--;
+    disableButton(true, false);
     updateGallery();
     if (currentIndex === itemsGallery.length - 1) {
         galleryContainer.addEventListener('transitionend', () => {
             currentIndex = itemsGallery.length * 2 - 1;
             updateGallery(false);
+            enableButton(true, false);
         }, { once: true });//once: true - обробник подій працює один раз і автоматично видаляється
+    } else {
+        galleryContainer.addEventListener('transitionend', () => enableButton(true, false), { once: true });
     }
 }
 updateGallery(false);
@@ -225,15 +260,13 @@ nextButton.addEventListener('click', showNext);
 prevButton.addEventListener('click', showPrev);
 
 
-const header = document.querySelector('header.content');
-
 let lastScrollTop = 0;//змінна для збереження позиції останнього скролінгу
 
 window.addEventListener('scroll', () => {
 
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-        header.classList.add('hidden');
+        header.add('hidden');
     } else if (scrollTop < lastScrollTop) {
         header.classList.remove('hidden');
     }
