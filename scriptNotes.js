@@ -79,3 +79,47 @@ fruits.shift();
 console.log(fruits);
 // fruits.unshift();
 // console.log(fruits);
+
+//push/pop працюють швидко
+//shift/unshift, працюють повільно
+
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let sum = 0;
+let sumOdd = 0;
+let sumEven = 0;
+let ph = 1;
+console.log(numbers);
+
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i]%2 == 0) {
+        sumEven = sumEven + numbers[i];
+    } else if(numbers[i]%2 == 1) {
+        sumOdd = sumOdd + numbers[i];
+    }
+    sum = sum + numbers[i];
+    ph = ph * numbers[i];
+    //  console.log(i, numbers[i]);
+
+   //console.log(fruits.at(i));
+}
+console.log("Sum of not even numbers:", sumOdd)
+console.log("Sum of even numders:", sumEven);
+console.log("sum:", sum);
+console.log("ph:", ph);
+
+sumEven = 0;
+sumOdd = 0;
+ph = 1;
+for (let num of numbers) {
+    console.log(num);
+    if (num % 2 == 0) {
+        sumEven = sumEven + num;
+    } else {
+        sumOdd = sumOdd + num; 
+    }
+    ph = ph * num;
+}
+console.log("Sum of not even numbers:", sumOdd)
+console.log("Sum of even numders:", sumEven);
+console.log("ph:", ph);
