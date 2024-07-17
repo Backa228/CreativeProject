@@ -84,29 +84,43 @@ console.log(fruits);
 //shift/unshift, працюють повільно
 
 
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 101, 46, 55, 64];
 let sum = 0;
+let sum1 = 0;
 let sumOdd = 0;
 let sumEven = 0;
 let ph = 1;
 console.log(numbers);
 
 for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i]%2 == 0) {
+    if (numbers[i] % 2 == 0) {
         sumEven = sumEven + numbers[i];
-    } else if(numbers[i]%2 == 1) {
+    } else if (numbers[i] % 2 == 1) {
         sumOdd = sumOdd + numbers[i];
     }
-    sum = sum + numbers[i];
+    sum1 = sum1 + numbers[i++];
     ph = ph * numbers[i];
+    if (numbers[i] == numbers[0]) {
+        console.log("Поточне число", numbers[i])
+        console.log("Наступне число", numbers[i + 1])
+    } else if (numbers[i] == numbers[numbers.length - 1]) {
+        console.log("Попередне число", numbers[i - 1])
+        console.log("Поточне число", numbers[i])
+    } else {
+        console.log("Попередне число", numbers[i - 1])
+        console.log("Поточне число", numbers[i])
+        console.log("Наступне число", numbers[i + 1])
+    }
+}  
     //  console.log(i, numbers[i]);
 
    //console.log(fruits.at(i));
-}
 console.log("Sum of not even numbers:", sumOdd)
 console.log("Sum of even numders:", sumEven);
 console.log("sum:", sum);
 console.log("ph:", ph);
+
+
 
 sumEven = 0;
 sumOdd = 0;
@@ -123,3 +137,63 @@ for (let num of numbers) {
 console.log("Sum of not even numbers:", sumOdd)
 console.log("Sum of even numders:", sumEven);
 console.log("ph:", ph);
+
+console.log("sum1", sum1);
+
+// console.log(numbers[0]);
+// console.log(numbers[numbers.length - 1])
+
+// numbers[0] = 64;
+// numbers[numbers.length - 1] = 1;
+
+// console.log(numbers[0]);
+// console.log(numbers[numbers.length - 1])
+
+let temp;
+temp = numbers[0];
+numbers[0] = numbers[numbers.length - 1];
+numbers[numbers.length - 1] = temp;
+
+let temp1;
+temp1 = numbers[0];
+numbers[0] = numbers[2];
+numbers[2] = temp1;
+
+console.log(numbers[0]);
+console.log(numbers[numbers.length - 1]);
+console.log(numbers);
+
+numbers.length = 10;//процес скорочення елментів масиву - незворотній
+console.log(numbers);
+
+
+let num1 = [64, 83, 29, 10, 18, 19, 35, 20, 24, 101];
+let num2 = [83, 10, 65, 20, 77, 89, 24, 99, 100, 101];
+let num3 = [];
+
+for (let i = 0; i < num1.length; i++){
+    if (num1[i] == num2[i]) {
+        num3 = num1[i];
+        console.log(num3[i]);
+    }
+}
+console.log(num3)
+// [Rap, Reggae,Jazz, Blues, Rock-n-Roll]
+// [Jazz, Classics, Rock-n-Roll]
+// [Classics, Rock-n-Roll]
+//  Classics, Rock-n-Roll]
+let styles = ['Jazz', 'Blues'];
+console.log(styles);
+
+styles.push('Rock-n-Roll');
+console.log(styles);
+
+let temp2;
+temp2 = styles[1];
+styles[1] = styles[styles.length - 1];
+styles[styles.length - 1] = temp2;
+
+console.log(styles);
+
+styles.unshift('Rap', 'Reggae');
+console.log(styles);
