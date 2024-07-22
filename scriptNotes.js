@@ -197,3 +197,46 @@ console.log(styles);
 
 styles.unshift('Rap', 'Reggae');
 console.log(styles);
+
+// об`екти
+let newModelBMW = {
+    name: "BMW M4 CS",
+    price: "Starts from £117,100",
+    hoursePower: "510hp",
+    turbocharching: "yes",
+    color: "darkgreen"
+};
+console.log(newModelBMW);
+console.log(newModelBMW.name);
+console.log(newModelBMW.price);
+// console.log(newModelBMW.hoursePower);
+console.log(newModelBMW.turbocharching);
+console.log(newModelBMW.color);
+
+newModelBMW.engine = "3.0-litre";
+console.log(newModelBMW);
+
+delete newModelBMW.turbocharching;
+console.log(newModelBMW);
+//доступ до ключів через квадратні дужки
+
+console.log(newModelBMW['name']);
+newModelBMW[turbocharching = true];
+console.log(newModelBMW[turbocharching]);
+delete newModelBMW.turbocharching;
+
+delete newModelBMW["turbocharching"];
+console.log(newModelBMW);
+
+delete newModelBMW["hoursePower"];
+newModelBMW["hourse power"] = 510;
+console.log("newModelBMW"); 
+//коли саме використовувати тільки [ ]
+//коли назви ключа має декілька слів
+//[ ] дозволяють звернутися до властивості, ім'я якої може бути результатом виразу
+let key = "really pretty"
+newModelBMW[key] = true;
+console.log(newModelBMW);
+
+let keyInput = prompt('Введіть, яку властивість моделі BMW M4 хочете побачити?', );
+alert( newModelBMW[keyInput] );
