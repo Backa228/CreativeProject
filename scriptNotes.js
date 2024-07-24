@@ -234,9 +234,34 @@ console.log("newModelBMW");
 //коли саме використовувати тільки [ ]
 //коли назви ключа має декілька слів
 //[ ] дозволяють звернутися до властивості, ім'я якої може бути результатом виразу
-let key = "really pretty"
-newModelBMW[key] = true;
-console.log(newModelBMW);
 
-let keyInput = prompt('Введіть, яку властивість моделі BMW M4 хочете побачити?', );
-alert( newModelBMW[keyInput] );
+// let key = "really pretty"
+// newModelBMW[key] = true;
+// console.log(newModelBMW);
+
+// let keyInput = prompt('Введіть, яку властивість моделі BMW M4 хочете побачити?', );
+// alert(newModelBMW[keyInput]);
+
+//обчислювальні властивості 
+let fruit = "apple";
+// let fruit = prompt("Які фрукти купити?", "apple");
+let vegatable = "potato"
+
+let bag = {
+    [fruit + "Sweet"]: 5,
+    [vegatable]: 10,
+};
+console.log(bag);
+
+function makeUser(name, age) {
+    return {
+        name, // = name: name,
+        age,  // = age: age,
+    };
+};
+let user = makeUser("Andrey", "14");
+console.log(user);
+
+//оператор пошуку in
+//Перевіряє чи існує ключ в об'єкті? = true/false
+console.log("name" in user);
