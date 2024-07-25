@@ -265,3 +265,63 @@ console.log(user);
 //оператор пошуку in
 //Перевіряє чи існує ключ в об'єкті? = true/false
 console.log("name" in user);
+console.log("region" in user);
+console.log("test" in user);
+
+//цикл for...in (має доступ до ключів/властивостей + до значень)
+//впорядкування властивостей об'єкта
+let developer = {
+    name: "Dima",
+    age: "53", 
+    softSkills: 82, 
+    techSkills: 74,
+    health: 22,
+}
+
+for (let key in developer) {
+    // console.log(key);
+    // console.log(developer[key]);
+    console.log(key, developer[key]);
+}
+
+let codes = {
+   "49": "Німеччина",
+    "44": "Великобританія",
+    "38": "Україна",
+    "1": "США",
+}
+//"49" - цілочисельне ім'я властивості, цикл for...in впорядковує їх за зростанням
+for (let key in codes) {
+    console.log(key, codes[key]);
+}
+//№1
+let user1 = {};
+//1
+// user1.name = "Ivan";
+user1["name"] = "Ivan";
+//2
+// user1.surName = "Smith";
+user1["surName"] = "Smith";
+//3
+// user1.name = "Petro";
+user1["name"] = "Petro";
+//4
+// delete user1.name;
+delete user1["name"]
+console.log(user1)
+
+//№2
+function isEmpty(obj) {
+    if ("8:30" in obj) {
+        return false;
+    }
+    else return true;
+
+}
+let schedule = {};
+
+// let result = isEmpty(schedule)
+console.log( isEmpty(schedule) ); // true
+schedule["8:30"] = "Вставай";
+console.log( isEmpty(schedule) ); // false
+
