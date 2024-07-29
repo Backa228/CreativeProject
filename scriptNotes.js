@@ -325,3 +325,52 @@ console.log( isEmpty(schedule) ); // true
 schedule["8:30"] = "Вставай";
 console.log( isEmpty(schedule) ); // false
 
+//Bugs та Errors
+//Bugs - помилка в коді, яка не зупиняє програму, еле прошграма веде себе непередбачувано(не так як нам хочеться)
+//Errors - помилка в коді, яка повністю зупиняє програму
+//Syntax Error - шматок коду, який не можна прочитати
+
+//SyntaxError: Unexpected EOF
+//let error = "Syntax;
+//SyntaxError: Unexpected identifier 'b'. Expected a ')' or a ',' after a parameter declaration.
+
+// function add(a b){
+//     let result = a + b;
+//     if (result > 10){
+//         console.log("Error"); //SyntaxError: Unexpected token '}'. Expected a statement as the body of an if block.
+//         if (result > 20)
+//     }
+    //return a + b;
+//}
+
+
+//ReferenceError: Can't find variable: greting
+//Reference error(помилки під час виконання)
+// function greeting() {
+//     var greeting = "Hello Word";
+//     console.log(greting);
+// }
+
+// greeting();
+
+
+//Type error - помилка, коли значення не відповідає очікуваному типу
+//NaN - Not a Number
+// function multiple(a, b) {
+//     console.log(a * b)
+// }
+
+// multiple(10, 10);
+
+// const a = 1;
+// a = 10;
+
+//(5).pop();TypeError: 5.pop is not a function
+//TypeError: (5).pop is not a function.
+//(In '(5).pop()', '(5).pop' is undefined)
+
+//Range Error - помилка виникає тоді, коли аргументи функції виходять за межі дозволеного діапазону вхідних значень
+// console.log((10).toString(2));
+// console.log((104384984).toString(16));
+// console.log((10).toString(100));
+//RangeError: toString() radix argument must be between 2 and 36
