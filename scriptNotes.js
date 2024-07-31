@@ -374,3 +374,29 @@ console.log( isEmpty(schedule) ); // false
 // console.log((104384984).toString(16));
 // console.log((10).toString(100));
 //RangeError: toString() radix argument must be between 2 and 36
+
+try {
+    //  let d = 1;
+    // let c = 10;
+    // console.log(c + d);
+    // let a = 1;
+    // console.log(a());
+    //console.log((10).toString(100));
+} catch (err) {
+    console.log("Black Catch");
+    console.log(err);
+}
+
+//коли нема помилок, блок catch ігнорується
+//коли виникає помилка в блоці try, блок try зупиняється, спрацьовує блок catch
+//try..catch НЕ може ловити синтаксичні помилки(SyntaxError)
+
+try {
+    // setTimeout(function () {
+    //     LALALALLA;
+    // },1000)
+} catch (err) {
+    console.log("Block Catch");
+    console.log(err);
+}
+console.log("This line runs");
