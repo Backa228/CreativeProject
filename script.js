@@ -21,7 +21,7 @@ menuUl.addEventListener('mouseleave', function (event) {
 });
 
  catalog.forEach((catalogItem) => {
-    header.addEventListener('mouseleave', function () {
+    catalogItem.addEventListener('mouseleave', function () {
         hideCatalog(previousCatalogDiv, true);
     });
 })
@@ -266,7 +266,7 @@ window.addEventListener('scroll', () => {
 
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-        header.add('hidden');
+        header.classList.add('hidden');
     } else if (scrollTop < lastScrollTop) {
         header.classList.remove('hidden');
     }

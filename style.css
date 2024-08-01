@@ -37,6 +37,7 @@ body
 {
     font-family: 'Nunito-ExtraLight';
     background-color: var(--white);
+    margin: 0;
 }
 /* #region COLNMNS */
 
@@ -101,14 +102,15 @@ font-size, line-height - відносно розміру властивості 
 
 header.content
 {
+    margin: 0 auto;
     background-color: var(--lightgreen);
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px 20px 20px 20px;
     font-family: 'Nunito-Bold';
     font-size: 20px;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 0.75%;
+    left: 0.75%;
+    width: 99%;
     z-index: 1000;
     transition: top 0.5s ease-in-out
 }
@@ -498,6 +500,55 @@ main {
     margin-top: calc(67.2 / 16 * 1rem);
 }
 
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 80px;
+    /* margin-top: 70px; */
+}
+
+.articles-item{
+    position: relative;
+    width: 50%;
+}
+
+.articles-item img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.articles-overlay {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.articles-overlay h3 {
+    font-size: 24px;
+}
+
+.articles-overlay .article-button {
+    background-color: #fff;
+    color: black;
+    font-weight: 1000;
+    font-size: 18px;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+@media screen and (max-width: 600px){
+    .articles-item{
+        width: 100%;
+    }
+}
+
 .gallery {
     display: flex;
     align-items: center;
@@ -562,6 +613,7 @@ main {
     margin-left: 2.5rem;
     padding: 2.5rem 0;
     font-size: 48px;
+    font-weight: 1000;
     /* transform: translateX(-50%); */
 }
 
