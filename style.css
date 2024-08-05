@@ -402,7 +402,7 @@ header.content.hidden {
     width: 400px;
     height: 100%;
     background-color: #FFFF;
-    z-index: 999;
+    z-index: 9999;
     transition: right 0.3s ease;
     filter: blur();
     font-family: 'Nunito-Bold';
@@ -531,21 +531,61 @@ main {
     font-size: 24px;
 }
 
+.articles-overlay p{
+    margin: 0;
+}
+
+.articles-overlay .article-button:hover{
+    background-color: var(--darkGrayNike);
+    border-radius: 20px;
+}
+
+
 .articles-overlay .article-button {
     background-color: #fff;
     color: black;
     font-weight: 1000;
     font-size: 18px;
     width: 60px;
-    height: 30px;
     text-align: center;
     padding: 10px;
     border-radius: 25px;
 }
 
+@media screen and (max-width: 900px) {
+    .articles-overlay {
+        font-size: 14px;
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .articles-overlay h3 {
+        font-size: 19px;
+    }
+
+    .articles-overlay .article-button {
+        font-size: 16px;
+        width: 60px;
+    }
+}
+
 @media screen and (max-width: 600px){
     .articles-item{
         width: 100%;
+    }
+   .articles-overlay {  
+    font-size: 16px;
+    left: 50px;
+    bottom: 50px;
+    }
+        
+    .articles-overlay h3 {
+        font-size: 24px;
+    }
+        
+    .articles-overlay .article-button {
+        font-size: 18px;
+        width: 70px;
     }
 }
 
@@ -670,8 +710,33 @@ main {
         max-height: 0;
     }
 }
+
+.new {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 50px;
+}
+
+.new-item {
+    background: url(images/AirJordan1.webp);
+    width: calc(100%/3);
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.new-item #jordan-rise{
+
+}
+
+/* .new-item img {
+    width: 100%;
+    display: block;
+} */
+
 /*#region*/
-@function rem($px)
+/* @function rem($px)
 {
     $result: math.div($px, 16) + rem;
     @return $result
@@ -687,5 +752,5 @@ main {
 {
     $result: math.div($pxOne, $pxTwo) * 100%;
     @return $result;
-}
+} */
 /*#endregion*/
