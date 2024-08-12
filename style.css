@@ -736,13 +736,18 @@ main {
 }
 
 .new-below {
-    margin: auto;
+    margin: 50px auto;
     text-align: center;
     font-weight: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.new-below h1 {
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .new-below .new-buttom {
@@ -754,6 +759,11 @@ main {
     border-radius: 25px;
 }
 
+.new-below .new-buttom a{
+    color: #CACACB;
+    text-decoration: none;
+}
+
 .new-below .new-buttom:hover {
     background-color: rgba(88, 88, 88, 0.605);
     color: #000000;
@@ -761,6 +771,47 @@ main {
     width: 300px;
     padding: 5px;
     border-radius: 10px;
+    opacity: 0.75;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 7%;
+    height: 9em;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+}
+
+.category:hover{
+    height: 28em;
+}
+
+.category-item h2 {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.category-item ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.category-item ul li{
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.category-item ul a{
+    text-decoration: none;
+    color: #707072;
+    font-size: 15px;
+}
+
+.category-item ul a:hover{
+    color: #000000;
 }
 
 @media(max-width: 1200px){
@@ -781,6 +832,21 @@ main {
 
     .new-item img {
         top: 70%;
+    }
+}
+
+@media (max-width: 600px){
+    .category{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .category:hover{
+        height: auto;
+    }
+
+    .category .category-item ul{
+        display: none;
     }
 }
 

@@ -274,3 +274,18 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 
 });
+
+const category = document.querySelector('.category');
+console.log(category);
+
+console.log(document.documentElement.scrollTop);
+
+category.addEventListener('mouseenter', () => {
+    // category.scrollTop = category.scrollHeight;
+    // category.scrollTop = 500;
+    // document.documentElement.scrollTop = 100;
+    // console.log(document.documentElement.scrollTop);
+});
+
+const categoryHeader = document.querySelectorAll('.category-item h2');
+const categoryUl = document.querySelectorAll('.category-item ul');
