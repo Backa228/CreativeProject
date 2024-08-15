@@ -847,6 +847,11 @@ main {
 
     .category .category-item ul{
         display: none;
+        margin-left: 20px;
+    }
+
+    .category-item h2{
+        cursor: pointer;
     }
 }
 

@@ -2,6 +2,7 @@
 // || - AБО
 // && - І
 
+//масиви
 let cars = ['BMW', "Porche", "Audi"];
 
 // alert(cars);
@@ -197,6 +198,11 @@ console.log(styles);
 
 styles.unshift('Rap', 'Reggae');
 console.log(styles);
+
+
+
+
+
 
 // об`екти
 let newModelBMW = {
@@ -400,3 +406,16 @@ try {
     console.log(err);
 }
 console.log("This line runs");
+
+//Event - об'єкт з інформацією про елемент з який відбулась подія
+const title = document.querySelector('.new-below h1');
+console.log(title);
+
+title.addEventListener('click', function (event) {
+    //console.log(event) 
+    console.log(event.target);//властивість, яка вказує на об'єкт, де відбулась подія
+    console.log(event.type);//тип події
+    console.log(event.currentTarget);//властивість, яка вказує на об'єкт, до якого було підключено обробнийк події
+    //event.target може вказувати на дочірній елемент
+    console.log(event.timeStamp);//скільки мілісекунд 
+});

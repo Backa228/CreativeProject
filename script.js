@@ -289,3 +289,15 @@ category.addEventListener('mouseenter', () => {
 
 const categoryHeader = document.querySelectorAll('.category-item h2');
 const categoryUl = document.querySelectorAll('.category-item ul');
+
+categoryHeader.forEach((header, index) => {
+    // console.log(header);
+    // console.log(index);
+    header.addEventListener('click', () => {
+        const ul = categoryUl[index];
+        console.log(ul);
+        ul.style.display = 'block';
+    })
+});
+
+
