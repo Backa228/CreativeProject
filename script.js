@@ -296,8 +296,13 @@ categoryHeader.forEach((header, index) => {
     header.addEventListener('click', () => {
         const ul = categoryUl[index];
         console.log(ul);
-        ul.style.display = 'block';
-    })
+        if (ul.style.display === 'none') {
+            ul.style.display = 'block';
+            ul.style.opacity = '0';
+        } else {
+            ul.style.display = 'block';
+        }
+    });
 });
 
 

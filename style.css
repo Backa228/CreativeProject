@@ -782,6 +782,7 @@ main {
     height: 9em;
     overflow: hidden;
     transition: height 0.5s ease-in-out;
+    margin-bottom: 50px;
 }
 
 .category:hover{
@@ -853,5 +854,47 @@ main {
     .category-item h2{
         cursor: pointer;
     }
+}
+
+hr .hr-footer{
+    display: none;
+    margin: 50px;
+}
+
+footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 3%;
+    height: auto;
+    justify-content: flex-start;
+    margin-left: 5%;
+}
+
+.footer-item h2 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+    font-size: 20px;
+}
+
+.footer-item ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-item ul li {
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.footer-item ul a {
+    text-decoration: none;
+    color: #707072;
+    font-size: 15px;
+}
+
+.footer-item ul a:hover {
+    color: #000000;
 }
 
