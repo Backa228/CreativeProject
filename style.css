@@ -847,8 +847,23 @@ main {
     }
 
     .category .category-item ul{
-        display: none;
-        margin-left: 20px;
+        margin-left: 50px;
+        margin-bottom: 24px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+        /* transition: color 2s ease 0.5s; */
+        /* = */
+        /* transition-property: color;
+        transition-duration: 2s;
+        transition-timing-function: ease;
+        transition-delay: 0.5s; */
+    }
+
+    .category .category-item ul.show {
+    max-height: 1000px;
+    opacity: 1;
     }
 
     .category-item h2{
