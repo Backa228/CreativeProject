@@ -287,32 +287,45 @@ category.addEventListener('mouseenter', () => {
     // console.log(document.documentElement.scrollTop);
 });
 
-const mediaQuery = window.matchMedia('(max-width: 600px)')//слідкує за станом медіазапиту,
+const mediaQuery = window.matchMedia('(max-width: 600px)');//слідкує за станом медіазапиту,
 //якщо ширина екрану менша або дорівнює 600px, то цей об'єкт матиме властивість matches -> true
+const categoryHeader = document.querySelectorAll('.category-item h2');
+const categoryUl = document.querySelectorAll('.category-item ul');
 
-function mediaQueryChange(even) {
-    if (event.matches) {
-        const categoryHeader = document.querySelectorAll('.category-item h2');
-        const categoryUl = document.querySelectorAll('.category-item ul');
+let clickHandlers = [];//змінна зберігає всі додані обробники подій
 
-        categoryHeader.forEach((header, index) => {
-        header.addEventListener('click', () => {
-        const ul = categoryUl[index];
-            if (ul.classList.contains('show')) {
-                ul.classList.remove('show');
-            } else {
-                ul.classList.add('show');
-            }
-        console.log(ul);
-        });
-    });
+function toggleList(index) {
+    const ul = categoryUl[index];
+    if (ul.classList.contains('show')) {
+        ul.classList.remove('show');
     } else {
-        
+        ul.classList.add('show');
+    }
+}
+
+function mediaQueryChange(event) {
+    categoryHeader.forEach((header, index) => {
+        if (clickHandlers[index]) {
+            header.removeEventListener('click', clickHandlers[index]);
+        }
+    });
+    clickHandlers = [];
+    if (event.matches) {
+        categoryHeader.forEach((header, index) => {
+            const handler = () => toggleList(index);
+            clickHandlers[index] = handler;
+            header.addEventListener('click', handler);    
+        });
+        console.log(clickHandlers);
+    } else {
+        categoryUl.forEach((ul) => {
+        ul.classList.remove('show');
+    });
     }
 }
 
 mediaQueryChange(mediaQuery);//виклик функції одразу після завантаження сторінки
-mediaQuery.addListener(mediaQueryChange);
+mediaQuery.addEventListener('change', mediaQueryChange);
 
 
 
