@@ -292,10 +292,13 @@ const mediaQuery = window.matchMedia('(max-width: 600px)');//слідкує за
 const categoryHeader = document.querySelectorAll('.category-item h2');
 const categoryUl = document.querySelectorAll('.category-item ul');
 
+const footerHeader = document.querySelectorAll('.footer-item h2');
+const footerUl = document.querySelectorAll('.footer-item ul');
+
 let clickHandlers = [];//змінна зберігає всі додані обробники подій
 
-function toggleList(index) {
-    const ul = categoryUl[index];
+function toggleList(index, list) {
+    const ul = list[index];
     if (ul.classList.contains('show')) {
         ul.classList.remove('show');
     } else {
@@ -303,28 +306,37 @@ function toggleList(index) {
     }
 }
 
-function mediaQueryChange(event) {
-    categoryHeader.forEach((header, index) => {
+function mediaQueryChange(event, headerSelect, listSelect) {
+    headerSelect.forEach((header, index) => {
         if (clickHandlers[index]) {
             header.removeEventListener('click', clickHandlers[index]);
         }
     });
     clickHandlers = [];
     if (event.matches) {
-        categoryHeader.forEach((header, index) => {
-            const handler = () => toggleList(index);
-            clickHandlers[index] = handler;
-            header.addEventListener('click', handler);    
+        headerSelect.forEach((header, index) => {
+            if (headerSelect == footerHeader) {
+                const handler = () => toggleList(index, footerUl);
+                clickHandlers[index] = handler;
+                header.addEventListener('click', handler);    
+            }
+            if (headerSelect == categoryHeader) {
+                const handler = () => toggleList(index, categoryUl);
+                clickHandlers[index] = handler;
+                header.addEventListener('click', handler);    
+            }
+
         });
         console.log(clickHandlers);
     } else {
-        categoryUl.forEach((ul) => {
+        listSelect.forEach((ul) => {
         ul.classList.remove('show');
     });
     }
 }
 
-mediaQueryChange(mediaQuery);//виклик функції одразу після завантаження сторінки
+mediaQueryChange(mediaQuery, categoryHeader, categoryUl);//виклик функції одразу після завантаження сторінки
+mediaQueryChange(mediaQuery, footerHeader, footerUl);//виклик функції одразу після завантаження сторінки
 mediaQuery.addEventListener('change', mediaQueryChange);
 
 
