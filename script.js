@@ -315,17 +315,9 @@ function mediaQueryChange(event, headerSelect, listSelect) {
     clickHandlers = [];
     if (event.matches) {
         headerSelect.forEach((header, index) => {
-            if (headerSelect == footerHeader) {
-                const handler = () => toggleList(index, footerUl);
+                const handler = () => toggleList(index, listSelect);
                 clickHandlers[index] = handler;
-                header.addEventListener('click', handler);    
-            }
-            if (headerSelect == categoryHeader) {
-                const handler = () => toggleList(index, categoryUl);
-                clickHandlers[index] = handler;
-                header.addEventListener('click', handler);    
-            }
-
+                header.addEventListener('click', handler);
         });
         console.log(clickHandlers);
     } else {
@@ -337,7 +329,11 @@ function mediaQueryChange(event, headerSelect, listSelect) {
 
 mediaQueryChange(mediaQuery, categoryHeader, categoryUl);//виклик функції одразу після завантаження сторінки
 mediaQueryChange(mediaQuery, footerHeader, footerUl);//виклик функції одразу після завантаження сторінки
-mediaQuery.addEventListener('change', mediaQueryChange);
+
+mediaQuery.addEventListener('change', (event) => {
+    mediaQueryChange(event, categoryHeader, categoryUl);
+    mediaQueryChange(event, footerHeader, footerUl);
+});
 
 
 
