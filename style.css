@@ -383,12 +383,20 @@ header.content.hidden {
 
 .icons a {
     color: black;
+        text-decoration: none;
 }
 
 .icons i {
-    border-radius: 20px;
-    padding: 0.625rem;
+    /* border-radius: 20px;
+    padding: 0.625rem; */
     background-color: var(--lightgreen);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .menu-icon{
@@ -434,14 +442,29 @@ header.content.hidden {
     background-color: rgb(--darcgreen);
     border-radius: 50%;
     text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .close-btn i{
-    border-radius: 50%;
-    padding: calc(10/16*1rem) calc(14/16*1rem);
-    font-size: 25px;
-    color: aliceblue;
-    background-color: black;
+    background-color: var(--darkGrayNike);
+        color: black;
+        /* padding: calc(16/16*1rem) calc(20/16*1rem);
+        border-radius: 50%; */
+        cursor: pointer;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 22px;
+        height: 22px;
+        margin: 0;
+}
+
+.close-btn i:hover {
+    width: 22px;
+    height: 22px;
+    border-radius: 25%;
 }
 
 .sidebar-menu.active{
@@ -458,8 +481,6 @@ header.content.hidden {
 }
 
 .icons i:hover {
-    border-radius: 50%;
-    padding: 0.625rem;
     background-color: var(--darcgreen);
 }
 
@@ -468,6 +489,15 @@ header.content.hidden {
     padding: 0.625rem;
     background-color: var(--darkorange);
 }
+
+.no-scroll{
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+}
+ .no-hover{
+    pointer-events: none;
+ }
 
 @media screen and (max-width: 1200px){
     .menu, .search form{
@@ -945,7 +975,8 @@ footer{
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease, opacity 0.5s ease;
+        padding: 0 0 0 50px;
+        transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
         /* transition: color 2s ease 0.5s; */
         /* = */
         /* transition-property: color;

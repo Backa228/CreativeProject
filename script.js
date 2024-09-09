@@ -123,24 +123,27 @@ let sideBar = document.querySelector('.sidebar-menu');
 let closeBtn = document.querySelector('.close-btn i');
 let contentElements = document.querySelectorAll('.content');
 let body = document.body;
-menuIcon.addEventListener('click', function () {
+menuIcon.addEventListener('click', function() {
+    scrollPosition = window.scrollY; // Збереження поточної позиції прокрутки
     sideBar.classList.add('active');
-    body.style.overflow = 'hidden';//зупинка прокрутки
-
+    body.style.top = `-${scrollPosition}px`; // Забезпечення правильного положення сторінки
+    body.classList.add('no-scroll'); // Зупинка прокрутки, без зміни позиції
     contentElements.forEach(content => {
         content.classList.add('blur');
+        content.classList.add('no-hover'); // Додавання класу для блокування hover ефектів
     });
 });
 
-closeBtn.addEventListener('click', function () {
+closeBtn.addEventListener('click', function() {
     sideBar.classList.remove('active');
-    body.style.overflow = 'visible';//можемо прокручувати
-
+    body.classList.remove('no-scroll');
+    window.scrollTo(0, scrollPosition); // Повернення до попередньої позиції прокрутки
     contentElements.forEach(content => {
         content.classList.remove('blur');
+        content.classList.remove('no-hover'); // Видалення класу, щоб відновити hover ефекти
     });
-
 });
+
 const galleryContainer = document.querySelector('.gallery-container');
 const itemsGallery = [
     { src: 'img/galleryMainPage/air-max-97-womens-.png', alt: 'air-max-97', title: 'AIR MAX' },
@@ -295,45 +298,44 @@ const categoryUl = document.querySelectorAll('.category-item ul');
 const footerHeader = document.querySelectorAll('.footer-item h2');
 const footerUl = document.querySelectorAll('.footer-item ul');
 
-let clickHandlers = [];//змінна зберігає всі додані обробники подій
-
+// Функція для переключення видимості списків
 function toggleList(index, list) {
     const ul = list[index];
-    if (ul.classList.contains('show')) {
-        ul.classList.remove('show');
+    ul.classList.toggle('show');
+}
+
+// Додаємо обробники подій до заголовків
+function addEventListeners() {
+    categoryHeader.forEach((header, index) => {
+        header.addEventListener('click', () => toggleList(index, categoryUl));
+    });
+    
+    footerHeader.forEach((header, index) => {
+        header.addEventListener('click', () => toggleList(index, footerUl));
+    });
+}
+
+// Оновлюємо видимість списків на основі медіа-запиту
+function updateVisibility() {
+    if (mediaQuery.matches) {
+        // Для маленьких екранів (менше або рівно 600px), списки повинні бути приховані за замовчуванням
+        categoryUl.forEach(ul => ul.classList.remove('show'));
+        footerUl.forEach(ul => ul.classList.remove('show'));
     } else {
-        ul.classList.add('show');
+        // Для великих екранів (більше 600px), показуємо списки
+        categoryUl.forEach(ul => ul.classList.add('show'));
+        footerUl.forEach(ul => ul.classList.add('show'));
     }
 }
 
-function mediaQueryChange(event, headerSelect, listSelect) {
-    headerSelect.forEach((header, index) => {
-        if (clickHandlers[index]) {
-            header.removeEventListener('click', clickHandlers[index]);
-        }
-    });
-    clickHandlers = [];
-    if (event.matches) {
-        headerSelect.forEach((header, index) => {
-                const handler = () => toggleList(index, listSelect);
-                clickHandlers[index] = handler;
-                header.addEventListener('click', handler);
-        });
-        console.log(clickHandlers);
-    } else {
-        listSelect.forEach((ul) => {
-        ul.classList.remove('show');
-    });
-    }
-}
+// Додаємо обробники подій при завантаженні сторінки
+addEventListeners();
 
-mediaQueryChange(mediaQuery, categoryHeader, categoryUl);//виклик функції одразу після завантаження сторінки
-mediaQueryChange(mediaQuery, footerHeader, footerUl);//виклик функції одразу після завантаження сторінки
+// Оновлюємо видимість списків при завантаженні сторінки
+updateVisibility();
 
-mediaQuery.addEventListener('change', (event) => {
-    mediaQueryChange(event, categoryHeader, categoryUl);
-    mediaQueryChange(event, footerHeader, footerUl);
-});
+// Додаємо обробник події для зміни медіа-запиту
+mediaQuery.addEventListener('change', updateVisibility);
 
 
 
